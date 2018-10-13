@@ -1,4 +1,4 @@
-
+﻿
 <html>
 <script>
 var diasAtras = 31;
@@ -275,28 +275,21 @@ function definirRenda(dia)
 	}
 	else
 	{
-		if(escala["Milton"][dia]>=0)
+		var temp = [];
+		for (var pessoa in escala) 
 		{
-			escala["Milton"][dia] = 1;
-		}
-		else
-		{
-			var temp = [];
-			for (var pessoa in escala) 
+			if(escala[pessoa][dia] == 0)
 			{
-				if(escala[pessoa][dia] == 0)
-				{
-					temp.push(pessoa);
-				}
+				temp.push(pessoa);
 			}
-			escala[getPessoaMenosEscalada(temp, 1)][dia] = 1;
 		}
+		escala[getPessoaMenosEscalada(temp, 1)][dia] = 1;
 	}
 }
 
 function definirApoio(dia)
 {
-	if(escala["Milton"][dia] == 0)
+	if(escala["Milton"][dia] == 0 && escala["Milton"][dia+1] != -1 )
 	{
 		escala["Milton"][dia] = 8;
 	}
