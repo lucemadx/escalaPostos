@@ -1,0 +1,43 @@
+<html>
+
+<script>
+var mesAnterior = 
+{
+"Ana": [-1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2],
+"Milton": [1, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 1, -1],
+"Sergio": [3, -1, -2, 4, 5, 3, 2, -1, -2, 2, 3, 6, -2, 4, 6, 2, 5, -1, -2, 3, 4, 2, -2, 3, 6, 4, 5, -1, -2, 3],
+"Gabriel M": [-1, 5, -2, 3, 4, 5, 7, -1, 6, 7, 4, 3, -2, 5, 2, 4, 6, -1, -2, 7, 2, 4, -2, 6, 5, 3, 2, -1, -2, 6],
+"Rosangela": [-2, 4, 2, 6, 3, -1, -2, 5, 4, 6, -2, 2, 4, 3, 4, -1, -2, 2, 5, 4, -2, 3, 2, 7, 4, -1, -2, 5, 3, 1],
+"Gabriel C": [2, -2, 3, 2, 4, 4, -1, -2, 5, 3, 6, -2, 7, 2, 5, 3, -1, -2, 4, 6, 3, -2, 5, 4, 3, 2, -1, -2, 5, 4],
+"João Paulo": [-2, 2, 5, 4, -1, -2, 4, 2, 3, 4, -2, 5, 6, 7, -1, -2, 4, 5, 3, 2, -2, 5, 1, 2, -1, -2, 3, 4, 6, 2],
+"Vinicius": [4, 3, 6, -1, -2, 2, 5, 4, 2, -2, 7, 4, 5, -1, -2, 5, 3, 6, 2, -2, 5, 6, 4, -1, -2, 5, 4, 3, 2, -2],
+"Massami": [5, -2, 4, 5, 7, -1, -2, 3, 1, 5, 2, -2, 3, 6, 3, -1, -2, 4, 6, 5, 6, -2, 3, 5, 2, -1, -2, 2, 4, 5]
+
+};
+
+function ctrlcv(pessoasEscaladas)
+{
+	for(posto = 1; posto<9; posto++)
+	{
+		console.log(posto);
+		for (var k = 0; k < pessoasEscaladas.length; k++)
+		{
+			var quantidadeDias = 0;
+			
+			for (var p = 0; p < 30; p++)
+				if(mesAnterior[pessoasEscaladas[k]][p] == posto)
+					quantidadeDias++;
+					
+			console.log (pessoasEscaladas[k], quantidadeDias);
+		}
+	}
+}
+var todos = [];
+for (var pessoa in mesAnterior)
+{
+	todos.push(pessoa);
+}
+ctrlcv(todos);
+</script>
+
+</html>

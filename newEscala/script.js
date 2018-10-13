@@ -1,4 +1,4 @@
-var diasAtras = 31;
+﻿var diasAtras = 31;
 function Pessoa (nome, tipoEscala, dataEscala, horario)
 {
 	this.horario = horario;
@@ -57,21 +57,7 @@ var pessoas =
 	new Pessoa("Massami", 2, 10, "6h00"),
 	new Pessoa("João Paulo", 1, 6, "5h30"),
 	new Pessoa("Vinicius", 1, 5, "5h30")
-]
-
-var mesAnterior = 
-{
-"Ana": [-1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2],
-"Milton": [1, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 1, -1],
-"Sergio": [3, -1, -2, 4, 5, 3, 2, -1, -2, 2, 3, 6, -2, 4, 6, 2, 5, -1, -2, 3, 4, 2, -2, 3, 6, 4, 5, -1, -2, 3],
-"Gabriel M": [-1, 5, -2, 3, 4, 5, 7, -1, 6, 7, 4, 3, -2, 5, 2, 4, 6, -1, -2, 7, 2, 4, -2, 6, 5, 3, 2, -1, -2, 6],
-"Rosangela": [-2, 4, 2, 6, 3, -1, -2, 5, 4, 6, -2, 2, 4, 3, 4, -1, -2, 2, 5, 4, -2, 3, 2, 7, 4, -1, -2, 5, 3, 1],
-"Gabriel C": [2, -2, 3, 2, 4, 4, -1, -2, 5, 3, 6, -2, 7, 2, 5, 3, -1, -2, 4, 6, 3, -2, 5, 4, 3, 2, -1, -2, 5, 4],
-"João Paulo": [-2, 2, 5, 4, -1, -2, 4, 2, 3, 4, -2, 5, 6, 7, -1, -2, 4, 5, 3, 2, -2, 5, 1, 2, -1, -2, 3, 4, 6, 2],
-"Vinicius": [4, 3, 6, -1, -2, 2, 5, 4, 2, -2, 7, 4, 5, -1, -2, 5, 3, 6, 2, -2, 5, 6, 4, -1, -2, 5, 4, 3, 2, -2],
-"Massami": [5, -2, 4, 5, 7, -1, -2, 3, 1, 5, 2, -2, 3, 6, 3, -1, -2, 4, 6, 5, 6, -2, 3, 5, 2, -1, -2, 2, 4, 5]
-
-};
+];
 
 var escala = {};
 var horarios = {};
@@ -84,20 +70,26 @@ function trocaGabriel(fc, ft)
 	escala["Gabriel M"][ft] = 0;
 }
 
+var mesAnterior = 
+{
+"Ana": 		[0, 20, 0, 0, 0, 0, 0, 0, 0],
+"Milton": 	[0, 5, 0, 0, 0, 0, 0, 0, 16],
+"Sergio": 	[0, 0, 4, 6, 4, 3, 3, 0, 0],
+"Gabriel M": 	[0, 0, 3, 3, 4, 4, 4, 3, 0],
+"Rosangela": 	[0, 1, 4, 4, 6, 3, 2, 1, 0],
+"Gabriel C": 	[0, 0, 4, 5, 5, 4, 2, 1, 0],
+"João Paulo": 	[0, 1, 5, 3, 5, 4, 2, 1, 0],
+"Vinicius": 	[0, 0, 4, 3, 5, 5, 3, 1, 0],
+"Massami": 	[0, 1, 3, 4, 3, 6, 3, 1, 0]
+
+};
+
 function obterPessoaMenosEscalada(pessoasEscaladas, posto, dia)
 {
 	var pessoaMenosEscalada = undefined, quantidadeEscalada;
 	for (var k = 0; k < pessoasEscaladas.length; k++)
 	{
-		var quantidadeDias = 0;
-		if(mesAnterior[pessoasEscaladas[k]] !== undefined)
-			for (var p = 0; p < 30; p++)
-				if(mesAnterior[pessoasEscaladas[k]][p] == posto)
-				{
-					quantidadeDias++;
-					if(posto == 3 && horarios[pessoasEscaladas[k]] === "5h30")
-						quantidadeDias++;
-				}
+		var quantidadeDias = mesAnterior[pessoasEscaladas[k]][posto];
 		
 		for (var p = 0; p <= dia; p++)
 			if(escala[pessoasEscaladas[k]][p] == posto)
@@ -124,10 +116,6 @@ function ctrlcv(pessoasEscaladas)
 		{
 			var quantidadeDias = 0;
 			
-			for (var p = 0; p < 30; p++)
-				if(mesAnterior[pessoasEscaladas[k]][p] == posto)
-					quantidadeDias++;
-				
 			for (var p = 0; p <= dia; p++)
 				if(escala[pessoasEscaladas[k]][p] == posto)
 					quantidadeDias++;
@@ -144,7 +132,7 @@ function definirBilheteria2(dia)
 		if(escala[pessoa][dia] == 0 && horarios[pessoa] === "6h00" && pessoa != "Ana"&& pessoa != "Milton" && escala[pessoa][dia-1] != 2)
 			bilheteria.push(pessoa);
 
-		escala[obterPessoaMenosEscalada(bilheteria, 2, dia)][dia] = 2;
+	escala[obterPessoaMenosEscalada(bilheteria, 2, dia)][dia] = 2;
 }
 
 function definirRenda(dia)
