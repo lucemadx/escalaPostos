@@ -72,17 +72,18 @@ function trocaGabriel(fc, ft)
 
 var mesAnterior = 
 {
-"Ana": 		[0, 20, 0, 0, 0, 0, 0, 0, 0],
-"Milton": 	[0, 5, 0, 0, 0, 0, 0, 0, 16],
-"Sergio": 	[0, 0, 4, 6, 4, 3, 3, 0, 0],
-"Gabriel M": 	[0, 0, 3, 3, 4, 4, 4, 3, 0],
-"Rosangela": 	[0, 1, 4, 4, 6, 3, 2, 1, 0],
-"Gabriel C": 	[0, 0, 4, 5, 5, 4, 2, 1, 0],
-"João Paulo": 	[0, 1, 5, 3, 5, 4, 2, 1, 0],
-"Vinicius": 	[0, 0, 4, 3, 5, 5, 3, 1, 0],
-"Massami": 	[0, 1, 3, 4, 3, 6, 3, 1, 0]
+"Ana":			[0, 20, 0, 0, 0, 0, 0, 0, 0],
+"Milton":		[0, 5, 0, 0, 0, 0, 0, 0, 16],
+"Sergio":		[0, 0, 4, 6, 4, 3, 3, 0, 0],
+"Gabriel M":	[0, 0, 3, 3, 4, 4, 4, 3, 0],
+"Rosangela":	[0, 1, 4, 4, 6, 3, 2, 1, 0],
+"Gabriel C":	[0, 0, 4, 5, 5, 4, 2, 1, 0],
+"João Paulo":	[0, 1, 5, 3, 5, 4, 2, 1, 0],
+"Vinicius":		[0, 0, 4, 3, 5, 5, 3, 1, 0],
+"Massami":		[0, 1, 3, 4, 3, 6, 3, 1, 0]
 
-};
+};
+
 
 function obterPessoaMenosEscalada(pessoasEscaladas, posto, dia)
 {
@@ -143,9 +144,7 @@ function definirRenda(dia)
 		if(escala["Milton"][dia]>=0)
 			escala["Milton"][dia] = 1;
 		else
-		{
 			escala[obterPessoaMenosEscalada(obterPessoasNãoEscaladas(dia), 1, dia)][dia] = 1;
-		}
 }
 
 function obterPessoasNãoEscaladas(dia)
@@ -291,7 +290,6 @@ function exibe()
 			}
 			document.write("</td>");
 		}
-
 		document.write("<td>");
 		document.write(pessoa);
 		document.write("</td>");
