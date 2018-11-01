@@ -1,7 +1,7 @@
-﻿
+
 <html>
 <script>
-var diasAtras = 31;
+var diasAtras = 30;
 function Pessoa (nome, tipoEscala, dataEscala, renda)
 {
 	this.nome = nome;
@@ -47,21 +47,33 @@ function Pessoa (nome, tipoEscala, dataEscala, renda)
 }
 var pessoas = 
 [
-	new Pessoa("Ana", 3, 7),
-	new Pessoa("Milton", 3, 1),
-	new Pessoa("Rosangela", 2, 7),
-	new Pessoa("Sergio", 2, 9),
-	new Pessoa("Gabriel M", 2, 9),
-	new Pessoa("Gabriel C", 2, 8),
-	new Pessoa("Massami", 2, 10),
-	new Pessoa("João Paulo", 1, 6),
-	new Pessoa("Vinicius", 1, 5)
+	new Pessoa("Ana", 3, 4),
+	new Pessoa("Milton", 3, 5),
+	new Pessoa("Rosangela", 2, 6),
+	new Pessoa("Sergio", 2, 8),
+	new Pessoa("Gabriel M", 2, 8),
+	new Pessoa("Gabriel C", 2, 7),
+	new Pessoa("Massami", 2, 9),
+	new Pessoa("João Paulo", 1, 5),
+	new Pessoa("Vinicius", 1, 4),
+	new Pessoa("Rodrigo", 1, 6)
 ]
 
 var escala = {};
 
-
 var mesAnterior = 
+{
+"Sergio": [5, 7, -2, 4, 3, 1, 3, -1, -2, 4, 2, 6, -2, 3, 5, 2, 4, -1, -2, 2, 5, 6, -2, 4, 5, 2, 1, -1, -2, 5, 2],
+"Gabriel C": [6, -2, 5, 2, 4, 3, -1, -2, 2, 5, 6, -2, 1, 2, 4, 3, -1, -2, 2, 5, 1, -2, 6, 2, 4, 5, -1, -2, 5, 3, 5],
+"João Paulo": [-2, 3, 6, 5, -1, -2, 4, 5, 3, 6, -2, 5, 4, 1, -1, -2, 6, 4, 5, 3, -2, 3, 4, 6, -1, -2, 3, 1, 3, 4, -2],
+"Gabriel M": [4, 2, -2, 3, 2, -3, 5, 6, -2, 2, 5, 4, -2, 5, 3, 4, 5, -1, 3, -3, 2, 4, -2, 5, 2, 3, -3, 4, -2, 2, 3],
+"Rosangela": [-2, 5, 3, 6, 5, -1, -2, 2, 5, 3, -2, 2, 6, 4, 2, -1, -2, 2, 6, 4, -2, 2, 5, 3, 6, -1, -2, 2, 3, 6, -2],
+"Vinicius": [3, 6, 4, -1, -2, 5, 1, 3, 4, -2, 3, 7, 5, -1, -2, 6, 3, 5, 4, -2, 3, 7, 3, -1, -2, 6, 5, 3, 4, -2, 4],
+"Ana": [1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1],
+"Milton": [-2, 8, 8, 8, 8, 2, -1, -2, 8, 8, 8, 8, 3, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 4, -1, -2, 8, 8],
+"Massami": [2, 4, 2, -2, 6, 4, 2, 4, -1, -2, 4, 3, 2, -2, 6, 5, 2, 3, -1, -2, 4, 5, 2, -2, 3, 4, 2, 5, -1, -2, 6]
+}
+var mesPassado = 
 {
 "Ana": [-1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2, 1, 1, 1, 1, 1, -1, -2],
 "Milton": [1, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 1, -1, -2, 8, 8, 8, 8, 1, -1],
@@ -71,6 +83,7 @@ var mesAnterior =
 "Gabriel C": [2, -2, 3, 2, 4, 4, -1, -2, 5, 3, 6, -2, 7, 2, 5, 3, -1, -2, 4, 6, 3, -2, 5, 4, 3, 2, -1, -2, 5, 4],
 "João Paulo": [-2, 2, 5, 4, -1, -2, 4, 2, 3, 4, -2, 5, 6, 7, -1, -2, 4, 5, 3, 2, -2, 5, 1, 2, -1, -2, 3, 4, 6, 2],
 "Vinicius": [4, 3, 6, -1, -2, 2, 5, 4, 2, -2, 7, 4, 5, -1, -2, 5, 3, 6, 2, -2, 5, 6, 4, -1, -2, 5, 4, 3, 2, -2],
+"Rodrigo": [5, -2, 4, 5, 7, -1, -2, 3, 1, 5, 2, -2, 3, 6, 3, -1, -2, 4, 6, 5, 6, -2, 3, 5, 2, -1, -2, 2, 4, 5],
 "Massami": [5, -2, 4, 5, 7, -1, -2, 3, 1, 5, 2, -2, 3, 6, 3, -1, -2, 4, 6, 5, 6, -2, 3, 5, 2, -1, -2, 2, 4, 5]
 
 };
@@ -78,17 +91,27 @@ var postoInicial;
 
 for (var i = 0; i<pessoas.length; i++)
 	escala[pessoas[i].nome] = pessoas[i].gerarFolgas();
-trocaGabriel(6, 8);
+escala["Ana"][1] = 1;
+escala["Rosangela"][1] = 2;
+escala["João Paulo"][1] = 3;
+escala["Sergio"][1] = 4;
+escala["Massami"][1] = 5;
+escala["Vinicius"][1] = 6;
+escala["Gabriel M"][1] = "ATTD";
+escala["Milton"][1] = 8;
+/*trocaGabriel(6, 8);
 trocaGabriel(20, 19);	
 trocaGabriel(27, 28);
+*/
 for (var dia in escala[pessoas[0].nome] )
+if(dia !=1)
 	definirPostos(dia);
 
-/*var todos = [];
+var todos = [];
 for(var pessoa in escala)
 	todos.push(pessoa);
-ctrlcv(todos);
-*/
+//ctrlcv(todos);
+
 document.write("<table border=1>");
 document.write("<tr>");
 
@@ -111,48 +134,102 @@ for (var pessoa in escala)
 	for (var dia in escala[pessoa])
 	{
 		document.write("<td>");
-		switch(escala[pessoa][dia])
+		if(escala["Ana"][dia] < 0)
 		{
-			case -1:
-				document.write(" F ");
-			break;
+			switch(escala[pessoa][dia])
+			{
+				case -1:
+					document.write(" F ");
+				break;
 
-			case -2:
-				document.write("DSR");
-			break;
+				case -2:
+					document.write("DSR");
+				break;
 
-			case 1:
-				document.write("1;2");
-			break;
+				case 1:
+					document.write("1;2");
+				break;
 
-			case 2:
-				document.write("6;2");
-			break;
+				case 2:
+					document.write("6;2");
+				break;
 
-			case 3:
-				document.write("2;6");
-			break;
+				case 3:
+					document.write("2;6");
+				break;
 
-			case 4:
-				document.write("3;5");
-			break;
+				case 4:
+					document.write("3;5");
+				break;
 
-			case 5:
-				document.write("5;3");
-			break;
+				case 5:
+					document.write("5;3");
+				break;
 
-			case 6:
-				document.write("7");
-			break;
+				case 6:
+					document.write("7");
+				break;
 
-			case 7:
-				document.write("4");
-			break;
+				case 7:
+					document.write("4");
+				break;
 
-			default:
-				document.write(escala[pessoa][dia]);
-			break;
+				default:
+					document.write(escala[pessoa][dia]);
+				break;
 
+			}
+		}
+		else
+		{
+			switch(escala[pessoa][dia])
+			{
+				case -1:
+					document.write(" F ");
+				break;
+
+				case -2:
+					document.write("DSR");
+				break;
+
+				case 1:
+					document.write("1;2");
+				break;
+
+				case 2:
+					document.write("6;2");
+				break;
+
+				case 3:
+					document.write("2;6");
+				break;
+
+				case 4:
+					if(pessoa == "Rosangela")
+					document.write("3;7");
+					else
+					document.write("3;5");
+				break;
+
+				case 5:
+					document.write("5;3");
+				break;
+
+				case 6:
+					if(escala["Rosangela"][dia] == 4)
+					document.write("4;5");
+					else
+					document.write("4;7");
+				break;
+
+				case 7:
+					document.write("8");
+				break;
+
+				default:
+					document.write(escala[pessoa][dia]);
+				break;
+			}
 		}
 		document.write("</td>");
 	}
@@ -192,31 +269,47 @@ function getPessoaMenosEscalada(pessoasEscaladas, posto)
 	for (var k = 0; k < pessoasEscaladas.length; k++)
 	{
 		var quantidadeDias = 0;
-		if(mesAnterior[pessoasEscaladas[k]] !== undefined)
+		if(mesPassado[pessoasEscaladas[k]] !== undefined)
 		{
-			for (var p = 0; p < 30; p++)
+			for (var p = 0; p < mesPassado.length; p++)
 			{
-				if(mesAnterior[pessoasEscaladas[k]][p] == posto)
+				if(mesPassado[pessoasEscaladas[k]][p] == posto)
 				{
 					quantidadeDias++;
-					if(posto == 3 &&(pessoasEscaladas[k] == "João Paulo" || pessoasEscaladas[k] == "Vinicius"))
+					if(posto == 3 &&(pessoasEscaladas[k] == "Rodrigo" || pessoasEscaladas[k] == "João Paulo" || pessoasEscaladas[k] == "Vinicius"))
 					{
 						quantidadeDias++;
 					}
 				}
 			}
 		}
+		if(mesAnterior[pessoasEscaladas[k]] !== undefined)
+		{
+			for (var p = 0; p < mesAnterior.length; p++)
+			{
+				if(mesAnterior[pessoasEscaladas[k]][p] == posto)
+				{
+					quantidadeDias++;
+					if(posto == 3 &&(pessoasEscaladas[k] == "Rodrigo" || pessoasEscaladas[k] == "João Paulo" || pessoasEscaladas[k] == "Vinicius"))
+					{
+						quantidadeDias++;
+					}
+				}
+			}
+		}
+		var quantidadeDiasAtual = 0;
 		for (var p = 0; p <= dia; p++)
 		{
 			if(escala[pessoasEscaladas[k]][p] == posto)
 			{
-				quantidadeDias++;
+				quantidadeDiasAtual++;
 			}
 		}
-		if(posto == 3 &&(pessoasEscaladas[k] == "João Paulo" || pessoasEscaladas[k] == "Vinicius"))
+		if(posto == 3 &&(pessoasEscaladas[k] == "Rodrigo" ||pessoasEscaladas[k] == "João Paulo" || pessoasEscaladas[k] == "Vinicius"))
 		{
-			quantidadeDias /= 3;
+			quantidadeDiasAtual /= 3;
 		}
+		quantidadeDias+= quantidadeDiasAtual;
 		if(quantidadeDias<=quantidadeEscalada || pessoaMenosEscalada === undefined)
 		{
 		pessoaMenosEscalada = pessoasEscaladas[k];
@@ -259,7 +352,7 @@ function definirBilheteria2(dia)
 	var bilheteria = [];
 	for (var pessoa in escala)
 	{	
-		if(escala[pessoa][dia] == 0 && pessoa != "João Paulo" && pessoa != "Vinicius" && pessoa != "Rodrigo"&& pessoa != "Ana"&& pessoa != "Milton" && escala[pessoa][dia-1] != 2)
+		if(escala[pessoa][dia] == 0 && pessoa !="Rodrigo" && pessoa != "João Paulo" && pessoa != "Vinicius" && pessoa != "Rodrigo"&& pessoa != "Ana"&& pessoa != "Milton" && escala[pessoa][dia-1] != 2)
 		{
 			bilheteria.push(pessoa);
 		}	
@@ -289,7 +382,7 @@ function definirRenda(dia)
 
 function definirApoio(dia)
 {
-	if(escala["Milton"][dia] == 0 && escala["Milton"][dia+1] != -1 )
+	if(escala["Milton"][dia] == 0 && escala["Milton"][parseInt(dia)+1] != -1 )
 	{
 		escala["Milton"][dia] = 8;
 	}
@@ -321,7 +414,7 @@ function definirPostos(dia)
 	}
 	for (var pessoa in escala)
 	{
-		if(escala[pessoa][dia] == escala[pessoa][dia-1] && escala[pessoa][dia] !=1 && escala[pessoa][dia] !=8 && escala[pessoa][dia] !=2)
+		if(escala[pessoa][dia] == escala[pessoa][dia-1] && escala[pessoa][dia] !=1 && escala[pessoa][dia] !=8 && escala[pessoa][dia] !=2 && escala[pessoa][dia] !=3)
 		{
 			for (var i = 0; i<pessoasEscaladasGeral.length; i++)
 			{
@@ -362,6 +455,56 @@ function definirPostos(dia)
 				var aux = escala[pessoa][dia];
 				escala[pessoa][dia] = escala[substituto][dia];
 				escala[substituto][dia] = aux;
+			}
+		}
+		if(escala[pessoa][dia] == escala[pessoa][dia-1] && escala[pessoa][dia] == 3)
+		{
+			for (var i = 0; i<pessoasEscaladasGeral.length; i++)
+			{
+				if(pessoasEscaladasGeral[i] == pessoa)
+					pessoasEscaladasGeral.splice(i, 1);
+			}
+			var novo = [];
+			for (var i = 0; i<pessoasEscaladasGeral.length; i++)
+			{
+				if(pessoasEscaladasGeral[i] != "Rosangela")
+					novo.push(pessoasEscaladasGeral[i]);
+			}
+			if(novo.length>0)
+			{
+				var substituto = getPessoaMenosEscalada(novo, 2);
+				var aux = escala[pessoa][dia];
+				escala[pessoa][dia] = escala[substituto][dia];
+				escala[substituto][dia] = aux;
+			}
+			else
+			{
+				var substituto = getPessoaMenosEscalada(pessoasEscaladasGeral, escala[pessoa][dia]);
+				var aux = escala[pessoa][dia];
+				escala[pessoa][dia] = escala[substituto][dia];
+				escala[substituto][dia] = aux;
+			}
+		}
+		if(pessoa == "Rosangela" && escala["Ana"][dia] == 1)
+		{
+			if(escala[pessoa][dia] == 5)
+			{
+				for (var p = pessoasEscaladasGeral.length; p>=0; p--)
+				{
+					console.log(pessoasEscaladasGeral[p], pessoa);
+					if(pessoasEscaladasGeral[p] == pessoa)
+					{
+						pessoasEscaladasGeral.splice(p, 1);
+					}
+				}
+				var substituto = getPessoaMenosEscalada(pessoasEscaladasGeral, escala[pessoa][dia]);
+				if(substituto !== undefined)
+				{
+				var aux = escala[pessoa][dia];
+				escala[pessoa][dia] = escala[substituto][dia];
+				escala[substituto][dia] = aux;
+				console.log(substituto);
+				}
 			}
 		}
 	}
