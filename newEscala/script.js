@@ -1,4 +1,4 @@
-﻿var diasAtras = 31;
+var diasAtras = 31;
 function Pessoa (nome, tipoEscala, dataEscala, postos)
 {
 	this.nome = nome;
@@ -121,12 +121,53 @@ function definirPostos(dia)
 {
 	
 	var pessoasEscaladasGeral = obterPessoasNãoEscaladas(dia);
-	for (var i=0; i<postos.length; i++)
+	var postosDia = [];
+	var postosPessoasDia = [[]];
+	for (var i = 0; i<pessoasEscaladasGeral.length; i++)
+	{
+		postosDia.push(postos[i]);
+	}
+
+	for (i = 0; i<postosDia.length; i++)
+	{
+		postosPessoasDia[i][0] = postosDia[i];
+		postosPessoasDia[i][1] = 0;
+		for (var j = 0; j<pessoasEscaladasGeral.length; j++)
+		{
+			for(var k = 0; k<pessoasEscaladasGeral[j].postos.length; k++)
+			{
+				if(pessoasEscaladasGeral[j].postos[k] == postosDia[i])
+				{
+					postosPessoasDia[i][1]++;
+				}
+			}
+		}
+	}
+	for(i = 0; i <postosPessoasDia.length; i++)
+	{
+		for (var j = i; j<postosPessoasDia.length; j++)
+		{
+			if(postosPessoas[j][1]>postosPessoas[j+1][1])
+			{
+				var aux = postosPessoas[j];
+				postosPessoas[j] = postosPessoas[j+1];
+				postosPessoas[j+1] = aux;
+			}
+		}
+	}
+	for(i = 0; i <postosPessoasDia.length; i++)
+	{
+		document.write(postosPessoasDia[i][0]+dia +"<br>");
+		var robert = obterPessoaMenosEscalada(obterPessoasNãoEscaladas(dia), postosPessoasDia[i][0], dia);
+		if(robert !== undefined)
+			escala[robert][dia] = postosPessoasDia[i][0];
+	}
+	/*for (var i=0; i<postos.length; i++)
 	{
 		var robert = obterPessoaMenosEscalada(obterPessoasNãoEscaladas(dia), postos[i], dia);
 		if(robert !== undefined)
 			escala[robert][dia] = postos[i];
-	}
+	}*/
 	//substituiRepeticao(dia, pessoasEscaladasGeral);
 }
 	
@@ -269,5 +310,3 @@ function gerarEquipe()
 	}
 	document.getElementById("funcPosto").innerHTML = stringHtml;
 }
-
-
